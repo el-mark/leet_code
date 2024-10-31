@@ -6,18 +6,15 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        print(f'nums1: {nums1}')
-        new_array = []
-        for number1 in nums1:
-            for number2 in nums2:
-                print(f'number1: {number1}')
-                print(f'nums2[index2]: {number2}')
-                if number2 < number1 or number1 == 0:
-                    new_array.append(nums2.pop(0))
+        pointer1 = 0
+        pointer2 = 0
+        nums_copy = nums1[:]
+        if n != 0:
+            for index in range(len(nums1)):
+                if pointer2 >= n or (nums_copy[pointer1] < nums2[pointer2] and pointer1 < m):
+                    nums1[index] = nums_copy[pointer1]
+                    pointer1 += 1
                 else:
-                    new_array.append(number1)
-                    break
-        print(f'new_array: {new_array}')
-        nums1 = new_array
-        print(f'nums1: {nums1}')
+                    nums1[index] = nums2[pointer2]
+                    pointer2 += 1
         
